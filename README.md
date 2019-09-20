@@ -48,9 +48,75 @@ const climbingTemp = sequenceOf(
 ).combineWith({scale: "F"})
 ```
 
+## Storybook Your API calls, Loading States, API Errors
+
+Sometimes your users see loading states for a lot longer than you are able to during development—why not have stories for those loading states too? Feel their pain, and design to improve upon it right there in your UX design tool. 
+
+Like this example from a recent Storybook:
+
+![](sb-slow-search.gif)
+
+<details>
+
+<summary>
+Here's how:
+</summary>
+
+Imagine an oversimplified auto-complete component such as this one.
+
+```js
+import { searchApi } from './anotherFile'
+
+function AutoComplete() {
+  const [results, setResults] = useState([])
+  return (
+    <input onChange={(e) => {
+      searchApi(e.target.text)
+        .then(results => setResults(results))
+    }/>
+    { /* render results */ }
+  )
+}
+```
+
+It calls `searchApi`, a Promise-returning function, to get results, which are objects like `{text: 'Boom', value: 25}`. It then changes internal state with those results to cause a re-render. To simulate a slow state, the first thing we must do is make the component _default_ to using the search function it used before, but make it overridable as a prop.
+
+```js
+import {searchApi} from './anotherFile'
+function AutoComplete({ searchFunction = searchApi }) {
+  ...
+}
+```
+
+Now it will call searchApi by default _unless_ another function is provided. Let's provide one. Here's a mock function that, after a delay of 3000 msec, returns the array we'd get from the real service.
+
+```js
+const slowSearch = term => after(3000, [
+  {text: 'Abacus', value: 1},
+  {text: 'AbbA', value: 2}
+])).toPromise()
+```
+
+And now let's hand this function in to AutoComplete in our storeis.
+Now AutoComplete can display the results we want, when we want them! 
+
+```js
+storiesOf('Autocomplete', module)
+  .add('Regular Loading', () => (
+    <AutoComplete/>
+  ))
+  .add('Slow Loading', () => (
+    <AutoComplete searchFunction={slowSearch} />
+  ))
+```
+
+Why not add mock functions for failed lookups as well? This will make you think, and plan for it. All without leaving Storybook, thanks to Storybook-Animate, and RxJS Observables.
+
+</details>
+
 ## The Sky's The Limit!
 
-You can combine Storybook-Animate with CSS animations, React Transition Groups internal to your components - you are only limited by what you can come up with!
+You can combine Storybook-Animate with other means of animations. CSS animations, React Transition Groups internal to your components - you are only limited by what you can come up with!
 
 Got ideas that we haven't thought of? Search for an issue or open one if you don't see it.
 
