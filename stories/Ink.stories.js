@@ -1,8 +1,17 @@
 import React from "react"
-import Counter from "./Counter"
+import InboxRadioView from "./InboxRadioView"
 
 export default {
-  title: "Ink Counter"
+  title: "Inbox Radio (Ink)"
 }
 
-export const foo = () => <Counter>Foo</Counter>
+export const exampleView = () => {
+  const props = {
+    nowPlaying: { status: "downloading", title: "Dave Grohl - Play" },
+    queue: [
+      { status: "downloading", name: "Edgar Winter - Frankenstien" },
+      { status: "done", name: "Santana - Black Magic Woman" }
+    ]
+  }
+  return <InboxRadioView {...props} />
+}
