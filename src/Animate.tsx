@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 // @ts-ignore
-import { after } from "rx-helper"
+import { after, concat } from "rx-helper"
+import { repeat } from "rxjs/operators"
 
 export const Animate = ({
   propStream = after(0, {}),
@@ -8,25 +9,13 @@ export const Animate = ({
   loop = false
 }) => {
   const [props, setProps] = useState({})
-  const [renderNum, reRender] = useState(0)
+
+  const propChanges = loop
+    ? concat(propStream, after(1000)).pipe(repeat())
+    : propStream
   useEffect(() => {
-    let sub
-    function run() {
-      sub = propStream.subscribe({
-        next(newProps) {
-          setProps(newProps)
-        },
-        complete() {
-          loop && setTimeout(run, 500)
-        }
-      })
-    }
-    run()
+    let sub = propChanges.subscribe((newProps = {}) => setProps(newProps))
     return () => sub && sub.unsubscribe()
-  }, [renderNum])
-  return (
-    <div onClick={() => reRender(renderNum + 1)}>
-      {React.createElement(component, props)}
-    </div>
-  )
+  }, [])
+  return <div>{React.createElement(component, props)}</div>
 }
