@@ -1,6 +1,6 @@
 {
   "name": "storybook-animate",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "license": "MIT",
   "module": "dist/storybook-animate.esm.js",
@@ -17,6 +17,7 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
+    "@testing-library/user-event": ">=8.1.0",
     "react": ">=16.8"
   },
   "husky": {
@@ -42,6 +43,7 @@
     "@storybook/addon-links": "^5.2.1",
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
+    "@testing-library/user-event": "^8.1.0",
     "babel-loader": "^8.0.6",
     "react": "^16.9.0",
     "rxjs": "^6.5.3",
