@@ -1,4 +1,4 @@
-import { concat, Observable } from "rxjs"
+import { concat } from "rxjs"
 import { map } from "rxjs/operators"
 
 export function sequenceOf(...observables) {

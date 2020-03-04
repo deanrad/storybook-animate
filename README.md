@@ -97,7 +97,7 @@ const slowSearch = term => after(3000, [
 ])).toPromise()
 ```
 
-And now let's hand this function in to AutoComplete in our storeis.
+And now let's hand this function in to AutoComplete in our stories.
 Now AutoComplete can display the results we want, when we want them! 
 
 ```js
@@ -113,6 +113,75 @@ storiesOf('Autocomplete', module)
 Why not add mock functions for failed lookups as well? This will make you think, and plan for it. All without leaving Storybook, thanks to Storybook-Animate, and RxJS Observables.
 
 </details>
+
+## Want to use this with the Knobs addon?
+
+If you have a story that is driven by an Observable, such as one using `<Animate>` you may wish to use knobs to change that Observable's values, by incorporating the knob's value into the Observable's values.
+
+Or, you may want to use a knob to **produce** all the values of that Observable. Either way is possible.
+
+<details>
+<summary>
+Use a knob to change values
+</summary>
+
+For the case of modifying an Observable by a knob value, this is done by applying a `map` to every value, in which the knobs value is read. (You may have to read the knob's value once up-front, before the Observable produces a value, to make the knob appear in the Storybook UI).
+
+Story `ClimbingLoop`:
+```js
+  <Animate
+    component={Thermometer}
+    propStream={climbingTemp}
+  />
+```
+
+Story `KnobControlsScale`:
+```js
+  <Animate
+    component={Thermometer}
+    propStream={climbingTemp.pipe(
+      map(({ temp }) => ({
+        temp,
+        scale: select("Scale", { C: "C", F: "F" }, "F")
+      }))
+    )}
+  />
+```
+
+![](./knob-temp-1.gif)
+
+
+Each time the `climbingTemp` Observable has a value, `Animate` will render  `<Thermometer>` with the scale the knob is set to.
+
+</details>
+
+<details>
+<summary>
+Use a knob to produce values
+</summary>
+
+What if we want the temperature to be entirely controlled by a knob? We can use `<WithObservableKnob>` to create a knob, plus an Observable of its values, and render a component with those values.
+
+Story `KnobControlsTemperature`
+
+```js
+<WithObservableKnob
+  knob={[number, "Temp", 98]}
+  render={knobTemps => (
+    <Animate
+      component={Thermometer}
+      propStream={knobTemps.pipe(
+        map(v => ({ temp: v, scale: "F" }))
+      )}
+    />
+  )}
+/>
+```
+
+</details>
+
+![](./knob-temp-2.gif)
+
 
 ## The Sky's The Limit!
 

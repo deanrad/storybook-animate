@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react"
 import { after, concat } from "rx-helper"
 import { repeat } from "rxjs/operators"
 
+/**
+ * Rerenders a component each time an Observable of props (propStream)
+ * yields a new value
+ */
 export const Animate = ({
   propStream = after(0, {}),
   component,
