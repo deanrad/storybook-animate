@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/storybook-animate.svg)](https://badge.fury.io/js/storybook-animate)![twitter link](https://img.shields.io/badge/twitter-@deaniusol-55acee.svg)
+<a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>![twitter link](https://img.shields.io/badge/twitter-@deaniusol-55acee.svg)[![npm version](https://badge.fury.io/js/storybook-animate.svg)](https://badge.fury.io/js/storybook-animate)
 
 # Storybook-Animate
 
