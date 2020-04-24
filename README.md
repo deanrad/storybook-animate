@@ -12,7 +12,7 @@ Where you used to provide a story of a single component with props:
 ```js
 storiesOf('Thermometer', module)
   .add('Healthy Temperature', () => (
-    <Thermometer scale="F" temp={98.6}> 
+    <Thermometer scale="F" temp={98.6}>
   ))
 ```
 
@@ -24,7 +24,7 @@ storiesOf('Thermometer', module)
     <Animate
       component={Thermometer}
       propStream={climbingTemp}
-    />    
+    />
   ))
 ```
 
@@ -35,7 +35,7 @@ And here is the beautiful result:
 Try clicking on the animation to restart it, or using `<Animate loop={true} ... />` to just sit back and admire your animation :)
 
 ## Dive into Streams
-A `propStream` is an [RxJS](https://github.com/ReactiveX/rxjs) Observable, created any way you like. But to ease you in,  Storybook-Animate includes some helpers to supplement those provided by Rx-Helper:
+A `propStream` is an [RxJS](https://github.com/ReactiveX/rxjs) Observable, created any way you like. But to ease you in,  Storybook-Animate includes some helpers to supplement those provided by [Polyrhythm]():
 
 ```js
 const climbingTemp = sequenceOf(
@@ -50,7 +50,7 @@ const climbingTemp = sequenceOf(
 
 ## Storybook Your API calls, Loading States, API Errors
 
-Sometimes your users see loading states for a lot longer than you are able to during development—why not have stories for those loading states too? Feel their pain, and design to improve upon it right there in your UX design tool. 
+Sometimes your users see loading states for a lot longer than you are able to during development—why not have stories for those loading states too? Feel their pain, and design to improve upon it right there in your UX design tool.
 
 Like this example from a recent Storybook:
 
@@ -98,7 +98,7 @@ const slowSearch = term => after(3000, [
 ```
 
 And now let's hand this function in to AutoComplete in our stories.
-Now AutoComplete can display the results we want, when we want them! 
+Now AutoComplete can display the results we want, when we want them!
 
 ```js
 storiesOf('Autocomplete', module)

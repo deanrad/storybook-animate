@@ -2,7 +2,7 @@ import React from "react"
 import Thermometer from "./Thermometer"
 import { Animate } from "../src/Animate"
 import { sequenceOf } from "../src/helpers"
-import { after } from "rx-helper"
+import { after } from "polyrhythm"
 import { map } from "rxjs/operators"
 import { withKnobs, number, select } from "@storybook/addon-knobs"
 

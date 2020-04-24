@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import userEvent from '@testing-library/user-event';
-import { trigger as debug } from 'rx-helper';
+import { trigger } from 'polyrhythm';
 // Tries to type text against its selector, (ie for its children). Safe if no children
 // exist matching the selector. Intended for use in Storybook.
 export function AutoTyper({
@@ -17,8 +17,8 @@ export function AutoTyper({
   }, []);
 
   useEffect(() => {
-    debug('autotyper:mount');
-    return () => debug('autotyper:release');
+    trigger('autotyper:mount');
+    return () => trigger('autotyper:release');
   }, [domNode.current]);
 
   return <div ref={domNode}>{children}</div>;
