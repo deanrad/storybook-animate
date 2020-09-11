@@ -35,7 +35,7 @@ And here is the beautiful result:
 Try clicking on the animation to restart it, or using `<Animate loop={true} ... />` to just sit back and admire your animation :)
 
 ## Dive into Streams
-A `propStream` is an [RxJS](https://github.com/ReactiveX/rxjs) Observable, created any way you like. But to ease you in,  Storybook-Animate includes some helpers to supplement those provided by [Polyrhythm]():
+A `propStream` is an [RxJS](https://github.com/ReactiveX/rxjs) Observable, created any way you like. But to ease you in,  Storybook-Animate includes some helpers to supplement those provided by [Polyrhythm](https://github.com/deanius/polyrhythm):
 
 ```js
 const climbingTemp = sequenceOf(
