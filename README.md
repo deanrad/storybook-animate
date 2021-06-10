@@ -1,4 +1,4 @@
-<a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>![twitter link](https://img.shields.io/badge/twitter-@deaniusol-55acee.svg)[![npm version](https://badge.fury.io/js/storybook-animate.svg)](https://badge.fury.io/js/storybook-animate)
+<a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>![twitter link](https://img.shields.io/badge/twitter-@DevRadcliffe-55acee.svg)[![npm version](https://badge.fury.io/js/storybook-animate.svg)](https://badge.fury.io/js/storybook-animate)
 
 # Storybook-Animate
 
@@ -193,4 +193,4 @@ Got ideas that we haven't thought of? Search for an issue or open one if you don
 
 The Thermometer example is in the `stories/` folder of this project. Feel free to post a link to what you've built with it too, we can include it here!
 
-![twitter link](https://img.shields.io/badge/twitter-@deaniusol-55acee.svg)
+![twitter link](https://img.shields.io/badge/twitter-@DevRadcliffe-55acee.svg)
