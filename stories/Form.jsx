@@ -1,11 +1,11 @@
 import React from 'react'
 export const Form = () => {
-  return <div>
+  return <div style={{top: '3rem'}}>
     <div>
-      <input type="text" placeholder='email'/>
+      <input id="email" type="text" placeholder='email'/>
     </div>
     <div>
-      <input type="password" placeholder='password'/>
+      <input id="password"  type="text" placeholder='password'/>
     </div>
   </div>
 }

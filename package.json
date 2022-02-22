@@ -33,8 +33,10 @@
     "trailingComma": "none"
   },
   "dependencies": {
+    "@testing-library/dom": "^8.11.3",
     "@types/react": "^16.9.2",
     "global": "^4.4.0",
+    "omnibus-rxjs": "^1.0.0",
     "polyrhythm": "^1.0.0",
     "tsdx": "^0.9.2"
   },
