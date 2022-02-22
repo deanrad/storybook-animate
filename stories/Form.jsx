@@ -1,6 +1,6 @@
 import React from 'react'
 export const Form = () => {
-  return <div style={{top: '3rem'}}>
+  return <div style={{position: 'relative', top: '3rem'}}>
     <div>
       <input id="email" type="text" placeholder='email'/>
     </div>

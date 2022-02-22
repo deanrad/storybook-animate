@@ -17,10 +17,12 @@ const password = () => document.getElementById('password')
 // This is an Observable just for typing side-effects.
 // Yield the same (empty) props every time via `mapTo`
 const userFillsOutForm = concat(
-  after(500, () => {
+  after(1000),
+  after(Promise.resolve(), () => {
     userEvent.type(email(), 'me@example.com', { delay: 100 })
   }),
-  after(300, () => {
+  after(2000),
+  after(Promise.resolve(), () => {
     userEvent.type(password(), 'password123', { delay: 100 })
   }),
 ).pipe(
