@@ -17,7 +17,7 @@ export const Animate = ({
     ? concat(propStream, after(1000, null)).pipe(repeat())
     : propStream
   useEffect(() => {
-    let sub = propChanges.subscribe((newProps = {}) => setProps(newProps))
+    let sub = propChanges.subscribe((newProps) => setProps(newProps || {}))
     return () => sub && sub.unsubscribe()
   }, [])
   return <div>{React.createElement(component, props)}</div>
